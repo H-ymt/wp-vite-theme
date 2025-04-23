@@ -1,0 +1,8 @@
+.wrapper {
+  width: min(100% - 2rem, var(--wrapper-max-width, 100%));
+  margin-inline: auto;
+}
+
+h1 {
+  color: red;
+}

@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "vite": "^5.0.10",
+    "vite-plugin-live-reload": "^3.0.3"
+  }
+}
