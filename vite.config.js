@@ -13,12 +13,20 @@
 import { defineConfig } from "vite";
 import liveReload from "vite-plugin-live-reload";
 import { resolve } from "path";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config
 export default defineConfig({
   plugins: [
-    //vue(),
     liveReload(__dirname + "/**/*.php"),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "assets/static/*",
+          dest: "assets/static",
+        },
+      ],
+    }),
   ],
 
   // config

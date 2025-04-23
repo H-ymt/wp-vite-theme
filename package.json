@@ -12,6 +12,7 @@
   "devDependencies": {
     "sass": "^1.69.5",
     "vite": "^5.0.10",
-    "vite-plugin-live-reload": "^3.0.3"
+    "vite-plugin-live-reload": "^3.0.3",
+    "vite-plugin-static-copy": "^2.3.1"
   }
 }
