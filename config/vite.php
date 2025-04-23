@@ -40,7 +40,7 @@ add_action('wp_enqueue_scripts', function () {
     } else {
         // production version, 'npm run build' must be executed in order to generate assets
         // read manifest.json to figure out what to enqueue
-        $manifest = json_decode(file_get_contents(DIST_PATH . '/manifest.json'), true);
+        $manifest = json_decode(file_get_contents(DIST_PATH . '/.vite/manifest.json'), true);
 
         // is ok
         if (is_array($manifest)) {
