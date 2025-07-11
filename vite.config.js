@@ -10,6 +10,7 @@
 // on production everything will work just fine
 
 //import vue from '@vitejs/plugin-vue'
+import path from "path";
 import { defineConfig } from "vite";
 import liveReload from "vite-plugin-live-reload";
 import { resolve } from "path";
@@ -22,8 +23,8 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: "assets/static/*",
-          dest: "assets/static",
+          src: path.resolve(__dirname + `/assets/css/`),
+          dest: "assets/css/",
         },
       ],
     }),

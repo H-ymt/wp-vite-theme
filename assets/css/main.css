@@ -1,0 +1,6 @@
+@layer reset, base, components;
+
+@import url("./common/reset.css") layer(reset);
+
+@import url("./common/base.css") layer(base);
+@import url("./common/layout.css") layer(base);

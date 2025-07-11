@@ -2,7 +2,7 @@
 // include assets here
 
 // get SCSS styles
-import "./assets/sass/main.scss"
+import "./assets/css/main.css";
 
 // get scripts
-import './assets/js/app.js'
+import "./assets/js/app.js";
