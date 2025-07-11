@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly
 if (!defined("ABSPATH")) {
-    exit();
+  exit();
 }
 
 // Main switch to get frontend assets from a Vite dev server OR from production built folder
