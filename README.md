@@ -14,8 +14,7 @@
     - [2. ページ固有 CSS](#2-ページ固有-css)
   - [環境による読み込みパス](#環境による読み込みパス)
   - [CSS でのパス指定](#css-でのパス指定)
-- [設定](#設定)
-  - [開発モードの変更](#開発モードの変更)
+- [開発・本番環境の切り替え](#開発本番環境の切り替え)
 - [トラブルシューティング](#トラブルシューティング)
   - [よくある問題](#よくある問題)
     - [CSS が反映されない](#css-が反映されない)
@@ -61,7 +60,12 @@
 ## ディレクトリ構造
 
 フォーマッターは Prettier を導入済み。
-ESLint や Stylelint などの Linter、画像圧縮のプラグイン等は入っていないので必要に応じて適宜インストールする。
+ESLint や Stylelint などの Linter も設定済み。
+
+**Git フック（lefthook）**
+
+- コミット時：自動的に Prettier、Stylelint、ESLint が実行され、修正されたファイルは自動ステージング
+- プッシュ時：コードの品質チェックを実行（修正は行わない）
 
 ```
 project-name
@@ -132,9 +136,6 @@ project-name
 
 - ビルド後のファイルを読み込み：`/wp-content/themes/theme-name/assets/css/`
 
-> [!IMPORTANT]
-> 開発環境と本番環境の切り替えは [`IS_VITE_DEVELOPMENT`](functions.php) 定数で制御されます。デプロイ前に必ず `false` に設定して確認してください。
-
 ### CSS でのパス指定
 
 CSS ファイルでパスを指定するときは次の様に変数を用いる必要があります。
@@ -152,21 +153,22 @@ background: url($base-dir + "assets/images/dummy.jpg");
 本番環境のパス
 `$base-dir: '/dist/'`
 
-## 設定
+## 開発・本番環境の切り替え
 
-### 開発モードの変更
+`functions.php` の `IS_VITE_DEVELOPMENT` 定数で開発サーバーと本番ビルドを切り替えます。
 
-`functions.php` にて`IS_VITE_DEVELOPMENT` 定数で開発サーバーと本番ビルドを切り替えます。
+- **開発モード**：`define( "IS_VITE_DEVELOPMENT", true );`
+  - `main.js`が CSS ファイルを読み込み
+  - Vite サーバー（`http://localhost:3000`）からアセットを配信
+- **本番モード**：`define( "IS_VITE_DEVELOPMENT", false );`
+  - `dist/` ディレクトリ内の `main.css` を読み込み
+  - ビルド済みアセットを使用
 
-- 開発モードオン：`define( "IS_VITE_DEVELOPMENT", true );`
-- 開発モードオフ：`define( "IS_VITE_DEVELOPMENT", false );`
+> [!IMPORTANT]
+> デプロイ前に必ず `IS_VITE_DEVELOPMENT` を `false` に設定してください。
 
-開発モードでは、`main.js`が CSS ファイルを読み込みます。
-
-開発モードがオフの場合、`dist/` ディレクトリ内の `main.css` が読み込まれます。
-
-> [!NOTE] 推奨
-> `wp-config.php` に以下を追加：
+> [!NOTE] 推奨設定
+> セキュリティのため、`wp-config.php` で環境を管理することを推奨：
 >
 > ```php
 > // 開発環境
@@ -176,7 +178,7 @@ background: url($base-dir + "assets/images/dummy.jpg");
 > define("IS_VITE_DEVELOPMENT", false);
 > ```
 >
-> **注意:** セキュリティのため、`functions.php` からこの設定を削除し、`wp-config.php` で管理することを推奨します。
+> この場合、`functions.php` からこの設定を削除してください。
 
 ## トラブルシューティング
 
