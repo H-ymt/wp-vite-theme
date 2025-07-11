@@ -140,7 +140,8 @@ background: url($base-dir + "assets/images/dummy.jpg");
 
 開発モードがオフの場合、`dist/` ディレクトリ内の `main.css` が読み込まれます。
 
-> [!CAUTION] **推奨設定方法:** > `wp-config.php` に以下を追加：
+> [!NOTE] 推奨
+> `wp-config.php` に以下を追加：
 >
 > ```php
 > // 開発環境
