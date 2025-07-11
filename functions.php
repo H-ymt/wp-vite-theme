@@ -11,3 +11,4 @@ define('IS_VITE_DEVELOPMENT', true);
 include "config/vite.php";
 
 require_once "functions/post-type.php";
+require_once "functions/enqueue-page-specific-css.php";
