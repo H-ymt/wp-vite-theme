@@ -31,7 +31,6 @@ Thumbs.db
 # Directory for editor backups and configs
 .idea/
 *.sublime*
-.vscode/
 
 # Ignore Sass's .map files
 *.map
