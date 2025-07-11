@@ -22,7 +22,5 @@ sql
 style.css
 
 # Other configs
-*.yml
-*.yaml
 php.ini
 wp-cli*
