@@ -38,7 +38,6 @@
 > Node.js v22系・npm v11系 で動作を固定しています。  
 > [Volta](https://volta.sh/) などのバージョン管理ツールで `volta install node@22 npm@11` を実行し、バージョンを揃えてください。
 
-
 ### Local のプロジェクト作成〜開発サーバー起動
 
 1. [Local](https://localwp.com/)でプロジェクトを作成し、サーバーを立ち上げます。
@@ -171,10 +170,10 @@ background: url($base-dir + "assets/images/dummy.jpg");
 >
 > ```php
 > // 開発環境
-> define('IS_VITE_DEVELOPMENT', true);
+> define("IS_VITE_DEVELOPMENT", true);
 >
 > // 本番環境
-> define('IS_VITE_DEVELOPMENT', false);
+> define("IS_VITE_DEVELOPMENT", false);
 > ```
 >
 > **注意:** セキュリティのため、`functions.php` からこの設定を削除し、`wp-config.php` で管理することを推奨します。

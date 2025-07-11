@@ -1,4 +1,6 @@
-<?php /* Template Name: Sample Page */ ?>
+<?php
+/* Template Name: Sample Page */
+?>
 <?php get_header(); ?>
 <main>
   <div class="container">

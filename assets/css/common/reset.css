@@ -42,7 +42,6 @@
   * Mobile browsers have an algorithm that automatically adjusts font sizes to prevent text from becoming too small.
   * This controls the auto-adjustment feature to prevent unwanted resizing.
   */
-  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 
   /* Prevents layout shift caused by the appearance or disappearance of the scrollbar. */
@@ -171,15 +170,14 @@
   * Set a monospace font family referencing Tailwind.
   * @see https://tailwindcss.com/docs/font-family
   */
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-
-  /* Font feature settings can have adverse effects on monospaced fonts, so their values are explicitly set to `initial` to prevent inheritance. */
-  font-feature-settings: initial;
-  font-variation-settings: initial;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Resets the `font-size` specified in the UA stylesheet to allow inheritance. */
   font-size: unset;
+  font-variation-settings: initial;
+
+  /* Font feature settings can have adverse effects on monospaced fonts, so their values are explicitly set to `initial` to prevent inheritance. */
+  font-feature-settings: initial;
 
   /*
   * Disables font ligatures for programming fonts (like Fira Code)
@@ -206,24 +204,26 @@
 
 @media (forced-colors: active) {
   :where(mark) {
+    color: HighlightText;
+
     /*
     * In forced-colors mode, the color of the mark element may not change, which can be problematic. Use system colors in forced-colors mode.
     * @see https://adrianroselli.com/2017/12/tweaking-text-level-styles.html#MarkWHCM
     */
     background-color: Highlight;
-    color: HighlightText;
   }
 }
 
 @media print {
   :where(mark) {
+    border-style: dotted;
+
     /*
     * Not all printers support color, and users might print in grayscale.
     * It's worth adding a non-disruptive style that scales with the text, as an alternative to relying only on background color.
     * @see https://adrianroselli.com/2017/12/tweaking-text-level-styles.html#MarkPrint
     */
     border-width: 1px;
-    border-style: dotted;
   }
 }
 
@@ -248,12 +248,13 @@
 /* ======================================================
 //  MARK: Embedded content
 // ====================================================== */
+/* stylelint-disable-next-line selector-type-no-unknown */
 :where(img, svg, picture, video, canvas, model, audio, iframe, embed, object) {
-  /* Automatically adjust block size based on content. */
-  block-size: auto;
-
   /* Prevents overflow by setting the maximum width to `100%`. */
   max-inline-size: 100%;
+
+  /* Automatically adjust block size based on content. */
+  block-size: auto;
 
   /* Prevents extra space from appearing at the bottom of the element. */
   vertical-align: bottom;
@@ -287,21 +288,22 @@
 // ====================================================== */
 :where(button, input, select, textarea),
 ::file-selector-button {
+  font: unset;
+  color: unset;
+  text-align: unset;
+  letter-spacing: unset;
+
+  /* These styles specified in the UA stylesheet are often unnecessary, so they are reset to allow for inheritance. */
+  border-color: unset;
+  border-style: solid;
+
   /*
   * These elements are often styled with a border, so a `1px` border is applied by default for consistency.
   * This ensures readability even for unstyled elements.
   * When resetting, it's recommended to use `border-color: transparent` instead of `border: none` to account for forced color modes.
   */
   border-width: 1px;
-  border-style: solid;
-
-  /* These styles specified in the UA stylesheet are often unnecessary, so they are reset to allow for inheritance. */
-  border-color: unset;
   border-radius: unset;
-  color: unset;
-  font: unset;
-  letter-spacing: unset;
-  text-align: unset;
 }
 
 :where(input:is([type="radio" i], [type="checkbox" i])) {
@@ -316,7 +318,7 @@
 
 :where(input[type="search" i]) {
   /* Remove the rounded corners of search inputs on macOS and normalize the background color. */
-  -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -326,11 +328,7 @@
   }
 }
 
-:where(
-    input:is([type="tel" i], [type="url" i], [type="email" i], [type="number" i]):not(
-        :placeholder-shown
-      )
-  ) {
+:where(input:is([type="tel" i], [type="url" i], [type="email" i], [type="number" i]):not(:placeholder-shown)) {
   /*
   * Certain input types need to maintain left alignment even in right-to-left (RTL) languages.
   * However, this only applies when the value is not empty, as the placeholder should be right-aligned.
@@ -347,11 +345,7 @@
   resize: block;
 }
 
-:where(
-    input:not([type="button" i], [type="submit" i], [type="reset" i]),
-    textarea,
-    [contenteditable]
-  ) {
+:where(input:not([type="button" i], [type="submit" i], [type="reset" i]), textarea, [contenteditable]) {
   /* Set to `no-autospace` because `text-autospace` can insert spaces during input, potentially causing erratic behavior. */
   text-autospace: no-autospace;
 }
@@ -362,13 +356,7 @@
   background-color: unset;
 }
 
-:where(
-    button,
-    input:is([type="button" i], [type="submit" i], [type="reset" i]),
-    [role="tab" i],
-    [role="button" i],
-    [role="option" i]
-  ),
+:where(button, input:is([type="button" i], [type="submit" i], [type="reset" i]), [role="tab" i], [role="button" i], [role="option" i]),
 ::file-selector-button {
   /*
   * On iOS, double-tapping a button can cause zooming, which harms usability.
@@ -378,21 +366,7 @@
   touch-action: manipulation;
 }
 
-:where(
-    button:enabled,
-    label[for],
-    select:enabled,
-    input:is(
-        [type="button" i],
-        [type="submit" i],
-        [type="reset" i],
-        [type="radio" i],
-        [type="checkbox" i]
-      ):enabled,
-    [role="tab" i],
-    [role="button" i],
-    [role="option" i]
-  ),
+:where(button:enabled, label[for], select:enabled, input:is([type="button" i], [type="submit" i], [type="reset" i], [type="radio" i], [type="checkbox" i]):enabled, [role="tab" i], [role="button" i], [role="option" i]),
 :where(:enabled)::file-selector-button {
   /* Indicate clickable elements with a pointer cursor. */
   cursor: pointer;
@@ -405,10 +379,10 @@
   * @see https://github.com/twbs/bootstrap/issues/12359
   */
   min-inline-size: 0;
+  padding: unset;
 
   /* The following default styles are often unnecessary, so they are reset. */
   margin-inline: unset;
-  padding: unset;
   border: unset;
 }
 
@@ -444,17 +418,18 @@
 }
 
 :where(dialog, [popover]) {
+  /* The following default styles are often unnecessary, so they are reset. */
+  padding: unset;
+
   /*
   * When these fixed-position elements are scrolled, preventing scroll chaining on the underlying page and bounce effects on mobile improves usability.
   * Disabling block-direction scroll chaining is recommended.
   */
   overscroll-behavior-block: contain;
-
-  /* The following default styles are often unnecessary, so they are reset. */
-  padding: unset;
   border: unset;
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 :where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
   /*
   * These elements can be easily displayed by explicitly setting their `display` property.
@@ -513,17 +488,18 @@
 
 @supports selector(::scroll-button(*)) {
   ::scroll-button(*) {
+    font: unset;
+    color: unset;
+    text-align: unset;
+    letter-spacing: unset;
+    touch-action: manipulation;
+    background-color: unset;
+    border-color: unset;
+    border-style: solid;
+
     /* Apply the same reset as for `<button>` elements. */
     border-width: 1px;
-    border-style: solid;
-    border-color: unset;
     border-radius: unset;
-    background-color: unset;
-    color: unset;
-    font: unset;
-    letter-spacing: unset;
-    text-align: unset;
-    touch-action: manipulation;
   }
 
   ::scroll-button(*):enabled {
