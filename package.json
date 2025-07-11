@@ -6,6 +6,7 @@
   "scripts": {
     "format": "prettier --write '**/*.{html,css,scss,js,json,php}'",
     "stylelint": "stylelint 'assets/**/*.{css,scss}' --fix",
+    "eslint": "eslint 'assets/**/*.{js,jsx,ts,tsx}' --fix",
     "dev": "vite",
     "build": "vite build"
   },
@@ -21,7 +22,9 @@
     "stylelint": "^15.10.3",
     "stylelint-config-recess-order": "^4.2.0",
     "stylelint-config-standard-scss": "^9.0.0",
-    "stylelint-prettier": "^4.0.2"
+    "stylelint-prettier": "^4.0.2",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0"
   },
   "engines": {
     "node": ">=22",
