@@ -34,6 +34,11 @@
 
 `npm install`コマンドを実行する。
 
+> [!NOTE]  
+> Node.js v22系・npm v11系 で動作を固定しています。  
+> [Volta](https://volta.sh/) などのバージョン管理ツールで `volta install node@22 npm@11` を実行し、バージョンを揃えてください。
+
+
 ### Local のプロジェクト作成〜開発サーバー起動
 
 1. [Local](https://localwp.com/)でプロジェクトを作成し、サーバーを立ち上げます。
