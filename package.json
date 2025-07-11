@@ -1,9 +1,11 @@
 {
   "type": "module",
-  "name": "playground",
+  "name": "wordpress-vite-theme",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "format": "prettier --write '**/*.{html,css,scss,js,json,php}'",
+    "stylelint": "stylelint 'assets/**/*.{css,scss}' --fix",
     "dev": "vite",
     "build": "vite build"
   },
@@ -13,6 +15,16 @@
     "sass": "^1.69.5",
     "vite": "^5.0.10",
     "vite-plugin-live-reload": "^3.0.3",
-    "vite-plugin-static-copy": "^2.3.1"
+    "vite-plugin-static-copy": "^2.3.1",
+    "prettier": "^3.0.3",
+      "@prettier/plugin-php": "^0.22.4",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recess-order": "^4.2.0",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-prettier": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=11"
   }
 }

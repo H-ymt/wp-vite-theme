@@ -1,0 +1,29 @@
+
+# Dependencies
+node_modules
+package.json
+package-lock.json
+
+# Version Control
+.git
+.gitignore
+.husky
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+
+# Build outputs
+dist
+build
+
+# WordPress specific
+plugins
+sql
+style.css
+
+# Other configs
+*.yml
+*.yaml
+php.ini
+wp-cli*
