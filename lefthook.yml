@@ -1,0 +1,31 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{html,css,scss,js,json,php}"
+      run: npm run format
+      stage_fixed: true
+
+    stylelint:
+      glob: "assets/**/*.{css,scss}"
+      run: npm run stylelint
+      stage_fixed: true
+
+    eslint:
+      glob: "assets/**/*.{js,jsx,ts,tsx}"
+      run: npm run eslint
+      stage_fixed: true
+
+pre-push:
+  commands:
+    format-check:
+      glob: "*.{html,css,scss,js,json,php}"
+      run: npx prettier --check '**/*.{html,css,scss,js,json,php}'
+
+    stylelint-check:
+      glob: "assets/**/*.{css,scss}"
+      run: npx stylelint 'assets/**/*.{css,scss}'
+
+    eslint-check:
+      glob: "assets/**/*.{js,jsx,ts,tsx}"
+      run: npx eslint 'assets/**/*.{js,jsx,ts,tsx}'

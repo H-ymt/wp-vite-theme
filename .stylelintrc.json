@@ -1,0 +1,12 @@
+{
+  "plugins": ["stylelint-prettier"],
+  "extends": ["stylelint-config-recess-order"],
+  "rules": {
+    "no-descending-specificity": null,
+    "color-hex-length": "long",
+    "selector-class-pattern": null,
+    "selector-pseudo-element-no-unknown": null,
+    "prettier/prettier": true
+  },
+  "ignoreFiles": ["node_modules/", "dist/", "assets/css/common/reset.css"]
+}
