@@ -3,14 +3,14 @@ function enqueue_page_specific_css()
 {
   $page_css_file = "";
 
-  if (function_exists('get_page_css_slug')) {
+  if (function_exists("get_page_css_slug")) {
     $slug = get_page_css_slug();
   } else {
-    $slug = '';
+    $slug = "";
   }
 
   if (!empty($slug)) {
-    $page_css_file = $slug . '.css';
+    $page_css_file = $slug . ".css";
   }
 
   if (!empty($page_css_file)) {
@@ -23,7 +23,7 @@ function enqueue_page_specific_css()
     // 本番: dist 配下またはテーマ内にファイルが存在する場合にのみ読み込む
     $enqueued = false;
 
-    if (defined('DIST_PATH') && defined('DIST_URI')) {
+    if (defined("DIST_PATH") && defined("DIST_URI")) {
       $dist_css_path = DIST_PATH . "/assets/css/page/" . $page_css_file;
       if (file_exists($dist_css_path)) {
         wp_enqueue_style("page-specific-css", DIST_URI . "/assets/css/page/" . $page_css_file, [], filemtime($dist_css_path));
@@ -43,7 +43,6 @@ function enqueue_page_specific_css()
 
 add_action("wp_enqueue_scripts", "enqueue_page_specific_css", 20);
 
-
 /**
  * 現在のページに対応する CSS スラッグを返す。
  * 例: 'front-page', 'page-sample', 'page', 'single', 'archive'
@@ -53,7 +52,7 @@ add_action("wp_enqueue_scripts", "enqueue_page_specific_css", 20);
 function get_page_css_slug()
 {
   if (is_front_page()) {
-    return 'front-page';
+    return "front-page";
   }
 
   if (is_page()) {
@@ -61,19 +60,19 @@ function get_page_css_slug()
     $page_template = get_page_template_slug($post->ID);
 
     if ($page_template) {
-      return basename($page_template, '.php');
+      return basename($page_template, ".php");
     }
 
-    return 'page';
+    return "page";
   }
 
   if (is_single()) {
-    return 'single';
+    return "single";
   }
 
   if (is_archive() || is_home()) {
-    return 'archive';
+    return "archive";
   }
 
-  return '';
+  return "";
 }

@@ -29,8 +29,8 @@
 </head>
 
 <?php
-$data_page_attr = '';
-if (function_exists('get_page_css_slug')) {
+$data_page_attr = "";
+if (function_exists("get_page_css_slug")) {
   $slug = get_page_css_slug();
   if (!empty($slug)) {
     $data_page_attr = ' data-page="' . esc_attr($slug) . '"';
@@ -38,6 +38,8 @@ if (function_exists('get_page_css_slug')) {
 }
 ?>
 
-<body <?php body_class();
-      echo $data_page_attr; ?>>
+<body <?php
+body_class();
+echo $data_page_attr;
+?>>
   <?php wp_body_open();
