@@ -4,9 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "format": "npm run format:php && npm run format:other",
-    "format:php": "prettier --write '**/*.php'",
-    "format:other": "prettier --plugin prettier-plugin-tailwindcss --write '**/*.{html,css,scss,js,json}'",
+    "format": "prettier --write '**/*.{php,html,css,scss,js,json}'",
     "stylelint": "stylelint 'assets/**/*.{css,scss}' --fix",
     "eslint": "eslint 'assets/**/*.{js,jsx,ts,tsx}' --fix",
     "dev": "vite",
