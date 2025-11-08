@@ -1,5 +1,5 @@
 {
-  "plugins": ["@prettier/plugin-php"],
+  "plugins": ["@prettier/plugin-php", "prettier-plugin-tailwindcss"],
   "arrowParens": "always",
   "printWidth": 180,
   "tabWidth": 2,
