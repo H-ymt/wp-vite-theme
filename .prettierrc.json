@@ -1,5 +1,5 @@
 {
-  "plugins": ["@prettier/plugin-php", "prettier-plugin-tailwindcss"],
+  "plugins": ["@prettier/plugin-php"],
   "arrowParens": "always",
   "printWidth": 180,
   "tabWidth": 2,
@@ -16,6 +16,12 @@
         "useTabs": false,
         "printWidth": 180,
         "phpVersion": "8.0"
+      }
+    },
+    {
+      "files": "*.{html,js,jsx}",
+      "options": {
+        "plugins": ["prettier-plugin-tailwindcss"]
       }
     }
   ]
