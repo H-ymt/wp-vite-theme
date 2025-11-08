@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write '**/*.{html,css,scss,js,json,php}'",
+    "format": "npm run format:php && npm run format:other",
+    "format:php": "prettier --write '**/*.php'",
+    "format:other": "prettier --plugin prettier-plugin-tailwindcss --write '**/*.{html,css,scss,js,json}'",
     "stylelint": "stylelint 'assets/**/*.{css,scss}' --fix",
     "eslint": "eslint 'assets/**/*.{js,jsx,ts,tsx}' --fix",
     "dev": "vite",
@@ -14,7 +16,7 @@
   "keywords": [],
   "author": "",
   "devDependencies": {
-    "@prettier/plugin-php": "^0.22.4",
+    "@prettier/plugin-php": "^0.24.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "lefthook": "^1.12.1",
