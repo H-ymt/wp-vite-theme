@@ -1,3 +1,3 @@
 {
-  "recommendations": ["esbenp.prettier-vscode", "stylelint.vscode-stylelint", "editorconfig.editorconfig"]
+  "recommendations": ["esbenp.prettier-vscode", "stylelint.vscode-stylelint", "editorconfig.editorconfig", "heybourn.headwind"]
 }

@@ -37,6 +37,3 @@ Thumbs.db
 
 # Ignore the assets directory if you're only working with processed files in /dist
 # /assets/
-
-# tailwind.config.js - For headwind VSCode extension users
-/tailwind.config.js
